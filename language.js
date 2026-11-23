@@ -14,11 +14,8 @@
     });
     const page = location.pathname.split('/').pop();
     document.title = titles[page]?.[selected] || (selected === 'zh' ? '口袋手风琴' : 'Pocket Accordion');
-    try { localStorage.setItem('pocket-accordion-language', selected); } catch (_) {}
   }
-  let saved = 'en';
-  try { saved = localStorage.getItem('pocket-accordion-language') || 'en'; } catch (_) {}
-  setLanguage(location.hash === '#english' ? 'en' : saved);
+  setLanguage('en');
   document.querySelectorAll('[data-switch]').forEach(button => {
     button.addEventListener('click', () => setLanguage(button.dataset.switch));
   });
